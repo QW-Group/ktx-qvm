@@ -1,3 +1,6 @@
 [submodule "q3lcc"]
 	path = q3lcc
 	url = https://github.com/ec-/q3lcc
+[submodule "q3asm"]
+	path = q3asm
+	url = https://github.com/ec-/q3asm
