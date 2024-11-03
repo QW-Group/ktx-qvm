@@ -29,9 +29,10 @@ RUN --mount=type=cache,id=${TARGETARCH}/var/cache/apk,target=/var/cache/apk \
     apk add --no-cache cmake bash ninja-build && rm /usr/bin/cpack /usr/bin/ctest
 
 COPY --from=builder /usr/local/bin/q3asm /usr/local/bin/q3lcc /usr/local/bin/q3cpp /usr/local/bin/q3rcc /usr/local/bin/
+COPY /compile.sh /usr/local/bin/
 
 # cmake needs to have some kind of cc installed, even if not used for regular C code
 ENV CC="q3lcc" \
     PATH="$PATH:/usr/lib/ninja-build/bin"
 
-WORKDIR /src
+CMD ["/usr/local/bin/compile.sh"]
